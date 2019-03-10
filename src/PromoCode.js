@@ -8,7 +8,8 @@ class Promocode extends Component {
         super(props);
         this.state = {
             showDetails : true,
-            promocode : ''
+            promocode : '',
+            success : false
         }
         this.toggle = this.toggle.bind(this);
         this.applyPromo = this.applyPromo.bind(this);
@@ -24,17 +25,12 @@ class Promocode extends Component {
               error : true
           })
       }else{
-        this.setState({error : true})
         this.props.dispatch(applyPromoCode());
-       // this.setState({success : true})
-      }
-     
-     
-      
+        this.setState({success : true})
+      }      
   }
   handleInputChange(event) {
-
-    this.setState({promocode: event.target.value, error : false});
+    this.setState({promocode: event.target.value, error : false, success : false});
   }
   promoCodeForm () {
       return (
@@ -47,6 +43,7 @@ class Promocode extends Component {
                 <button type="button" className="applyPromoButton" aria-label="Apply promo code" onClick={this.applyPromo}>Apply</button>
             </div>
             <div id="errorMessage" className={this.state.error ? "text-left red" : "hidden"}>Error!! Invalid promo code </div>
+            <div id="successMessage" className={this.state.success ? "text-left green" : "hidden"}>Congratulations!! you have success applied promotion</div>
             
         </div>)
   }

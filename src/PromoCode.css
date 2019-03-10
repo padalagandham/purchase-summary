@@ -56,3 +56,11 @@ input {
     background-color: #ccc;
     margin-top: 1rem;
 }
+
+
+#successMessage{
+    color: green;
+    padding: 10px;
+    background: #ccc;
+    margin-top: 10px;
+}
